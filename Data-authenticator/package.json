@@ -1,7 +1,7 @@
 {
   "name": "@rbxts/table-authenticator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sadly this dosen't support arrays :(",
   "main": "out/init.lua",
   "scripts": {
     "build": "rbxtsc",
@@ -9,8 +9,8 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "bortantle",
+  "license": "MIT",
   "types": "out/index.d.ts",
   "files": [
     "out",
@@ -30,5 +30,13 @@
     "eslint-plugin-roblox-ts": "^0.0.35",
     "prettier": "^3.0.2",
     "typescript": "^5.1.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bortantle/rbxts-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bortantle/rbxts-utils/issues"
+  },
+  "homepage": "https://github.com/bortantle/rbxts-utils/tree/master/Data-authenticator/README.md"
 }
