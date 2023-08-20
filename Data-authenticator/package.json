@@ -1,5 +1,5 @@
 {
-  "name": "@rbxts/data-authenticator",
+  "name": "@rbxts/table-authenticator",
   "version": "1.0.0",
   "description": "",
   "main": "out/init.lua",
