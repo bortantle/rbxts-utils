@@ -1,7 +1,7 @@
 {
   "name": "@rbxts/table-authenticator",
-  "version": "1.0.0",
-  "description": "Sadly this dosen't support arrays :(",
+  "version": "1.0.1",
+  "description": "Simple type checker for tables.",
   "main": "out/init.lua",
   "scripts": {
     "build": "rbxtsc",
