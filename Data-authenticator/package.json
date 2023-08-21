@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/table-authenticator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple type checker for tables.",
   "main": "out/init.lua",
   "scripts": {
