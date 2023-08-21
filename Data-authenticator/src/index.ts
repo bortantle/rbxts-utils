@@ -1,6 +1,6 @@
 type valueOf<T> = T[keyof T];
 
-export default function AutenticateData<tableType>(defaultData: tableType, possibleData: unknown) {
+export default function AuthenticateData<tableType>(defaultData: tableType, possibleData: unknown) {
 	/**
    * Returns the fixed data, converts the newData to the defaultData type 
    * 
@@ -26,7 +26,7 @@ export default function AutenticateData<tableType>(defaultData: tableType, possi
 		}
 
 		if(type(newValue) === "table") {
-			parsedData[key] = AutenticateData<typeof value>(value, newValue)
+			parsedData[key] = AuthenticateData<typeof value>(value, newValue)
 			continue;
 		}
 

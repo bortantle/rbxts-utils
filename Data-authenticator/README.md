@@ -3,7 +3,7 @@ Sadly this dosen't support arrays :(
 
 ## Example Usage 
 ```typescript
-import AutenticateData from "@rbxts/table-authenticator"
+import AuthenticateData from "@rbxts/table-authenticator"
 interface PlayerInfo {
     Coins: number,
     Gems: number,
@@ -21,7 +21,7 @@ const dataToBePatched = {
     Level: false
 }
 
-AutenticateData<PlayerInfo>(defaultPlayerData, dataToBePatched) 
+AuthenticateData<PlayerInfo>(defaultPlayerData, dataToBePatched) 
 /*
 returns {
     Coins: 0,
