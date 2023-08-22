@@ -40,7 +40,7 @@ new TweenReceiver().start()
 > Play(optional Player: Player | Player[]) - Plays the tween for the specified player(s) or the whole server.
 - If Player is specified the tween wont replicate to the server. 
 
-> Pause(optional Player: Player | Player[]) - Pauses the tween for the specified player(s) or the whole server.
+> Stop(optional Player: Player | Player[]) - Pauses the tween for the specified player(s) or the whole server.
 - If Player is specified the tween wont replicate to the server.
 
 
