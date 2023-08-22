@@ -1,7 +1,7 @@
 {
   "name": "@rbxts/tweenreplicator",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Easily replicate multiple tweens to the client.",
   "main": "out/init.lua",
   "scripts": {
     "build": "rbxtsc",
@@ -33,5 +33,13 @@
   },
   "dependencies": {
     "@rbxts/services": "^1.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bortantle/rbxts-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bortantle/rbxts-utils/issues"
+  },
+  "homepage": "https://github.com/bortantle/rbxts-utils/tree/master/TweenReplicator"
 }
