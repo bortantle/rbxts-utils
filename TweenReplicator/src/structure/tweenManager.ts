@@ -18,7 +18,7 @@ export const tweenManager = new (class TweenManager {
 		return [{ Instance: instance, Goal }];
 	}
 
-	CreateMassTable(Data: { Instance: Instance, Goal: Partial<ExtractMembers<Instance, Tweenable>> }[]) {
+	CreateMassTable<T extends Instance>(Data: { Instance: T, Goal: Partial<ExtractMembers<T, Tweenable>> }[]) {
 		return Data as TweenInstanceData<Instance>[];
 	}
 
