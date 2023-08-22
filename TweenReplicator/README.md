@@ -1,7 +1,7 @@
 # Why? 
 This module was created in order to get smooth tweens in the client by replicating the server's tweening with a RemoteEvent.
 However the code of this module is quite a mess and I don't recommend using it for now until I clean it up.
-If you need Smoothly Replicated Tweens i recommend using (TweenServiceV2)[https://github.com/Steadyon/TweenServiceV2] or your own system.
+If you need Smoothly Replicated Tweens i recommend using [TweenServiceV2][https://github.com/Steadyon/TweenServiceV2] or your own system.
 
 # How to use
 ## Server
