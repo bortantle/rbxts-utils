@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/tweenreplicator",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Easily replicate multiple tweens to the client.",
   "main": "out/init.lua",
   "scripts": {

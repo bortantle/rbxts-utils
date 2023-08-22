@@ -15,7 +15,7 @@ export class TweenReceiver {
         return this.CurrentTweens[TweenId]
     }
 
-    public useRemote(Action: TweenAction, TweenData: TweenData)  {
+    private useRemote(Action: TweenAction, TweenData: TweenData)  {
         switch(Action) {
             case "Start": {
                 const tweenInfo = new TweenInfo(...TweenData.tweenInfo)

@@ -33,6 +33,11 @@ export class Tween<T extends Instance> {
 		);
 	}
 
+	public Add<c extends Instance>(instance: TweenInstanceData<c>) {
+		if(this.startTime) return warn("You cannot add an instance to a tween that has already started")
+		this.instance.push(instance as unknown as TweenInstanceData<T>);
+	}
+
 	public Play(Player?: Player | Player[]) {
 		if (Player) {
 			if (typeIs(Player, "Instance") && classIs(Player, "Player")) {

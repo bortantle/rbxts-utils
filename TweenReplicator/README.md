@@ -1,13 +1,13 @@
 # Why? 
 This module was created in order to get smooth tweens in the client by replicating the server's tweening with a RemoteEvent.
-However the code of this module is quite a mess and I don't recommend using it for now until I clean it up.
-If you need Smoothly Replicated Tweens i recommend using [TweenServiceV2](https://github.com/Steadyon/TweenServiceV2) or your own system.
+It hasn't been tested a lot for now if you **DON'T** need multiples tweens replicated at once i recommend using [TweenServiceV2](https://github.com/Steadyon/TweenServiceV2) or your own system.
 
 # How to use
 ## Server
 ```typescript
 import { TweenManager } from "@rbxts/tweenreplicator";
-TweenManager.Create(
+// If every Instance is the same type you can make all of them at once
+TweenManager.Create<Part>(
 	[
 		{
 			Instance: Part1,
@@ -24,6 +24,12 @@ TweenManager.Create(
 	],
 	new TweenInfo(1),
 ).Play();
+
+// If you have multiple types i recomend using Tween.Add
+const Tween = TweenManager.Create<Instance>([], new TweenInfo(1));
+Tween.Add<Part>(Part, { Transparency: 0.2 });
+Tween.Add<Decal>(Decal, { Transparency: 0.5 });
+Tween.Play();
 ```
 ## Client
 ```typescript
@@ -43,6 +49,12 @@ new TweenReceiver().start()
 
 > Stop(optional Player: Player | Player[]) - Pauses the tween for the specified player(s) or the whole server.
 - If Player is specified the tween wont replicate to the server.
+
+> Add(TweenInstanceData: {
+    Instance: Instance,
+    Goal: TableOfGoals
+}) 
+- Adds an Instance to the current tween 
 
 
 # Extra 
