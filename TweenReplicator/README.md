@@ -40,7 +40,7 @@ new TweenReceiver().start()
 
 ## TweenManager Methods
 > Create(Instances: TweenData[], TweenInfo: TweenInfo) - Creates a new tween for multiple instances with the specified TweenInfo.
-- TweenData is an array of objects with the Instance and Goal properties.
+- TweenData[] is an array of objects with the Instance and Goal properties.
 - returns Tween
 
 ## Tween Methods
