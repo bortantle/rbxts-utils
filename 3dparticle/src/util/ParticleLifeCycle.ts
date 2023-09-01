@@ -1,4 +1,5 @@
 import { Particle } from "../constructors/Particle";
+import { ParticleEmitter } from "../constructors/ParticleEmitter";
 
 class ParticleLifeCycleConstructor {
     ParticleEmitters: ParticleEmitter[] = [];
@@ -27,7 +28,7 @@ game.GetService("RunService").BindToRenderStep("ParticleLifeCycleUpdate", 2, () 
     while(true) {
         wait(1)
         ParticleLifeCycle.ParticleEmitters.forEach(Emitter => {
-            if(Emitter.Enabled) Emitter.Emit()
+            if(Emitter.Enabled) Emitter.Emit(Emitter.Rate)
         })
     }
 })()

@@ -1,4 +1,6 @@
 import { ParticleEmitterProps, Vector3Sequence } from "../types";
+import { ParticleLifeCycle } from "../util/ParticleLifeCycle";
+import { Particle } from "./Particle";
 
 const defaultSettings: ParticleEmitterProps = {
     Acceleration: Vector3.zero,
@@ -28,7 +30,7 @@ const defaultSettings: ParticleEmitterProps = {
     Part: new Instance("Part")
 }
 
-export class Particle {
+export class ParticleEmitter {
         Acceleration: Vector3;
         Color: ColorSequence;
         Drag: number;
@@ -48,7 +50,7 @@ export class Particle {
         Transparency: NumberSequence;
         VelocityInheritance: number;
         VelocitySpread: number;
-        Parent: Instance;
+        Parent: BasePart | Part | Attachment | MeshPart;
         Part: Part | BasePart | MeshPart
         Enabled: boolean;
         Direction: Vector3
@@ -59,7 +61,7 @@ export class Particle {
             OnTouch?(): void
         }
         
-    constructor(Parent: Instance, Props: Partial<ParticleEmitterProps>, EventProps: {
+    constructor(Parent: BasePart | Part | Attachment | MeshPart, Props: Partial<ParticleEmitterProps>, EventProps: {
         onDestroy?(): void,
         onEmit?(): void,
         onRender?(): void,
@@ -89,6 +91,8 @@ export class Particle {
         this.Enabled = Props.Enabled ?? defaultSettings.Enabled
         this.Direction = Props.CustomDirection ?? defaultSettings.CustomDirection ?? new Vector3(0, 1, 0)
         this.EventProps = EventProps
+
+        ParticleLifeCycle.addEmitter(this)
     }
 
     Emit(Count: number) {
@@ -144,6 +148,6 @@ export class Particle {
     }
 
     Destroy(): void {
-
+        
     }
 }
