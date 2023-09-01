@@ -30,5 +30,8 @@
     "eslint-plugin-roblox-ts": "^0.0.35",
     "prettier": "^3.0.2",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@rbxts/lerp-functions": "^1.0.2"
   }
 }
