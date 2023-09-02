@@ -113,6 +113,7 @@ export class Particle {
 
     Destroy(): void {
         ParticleLifeCycle.Particles.filter(e=> e !== this)
+        print("removed from life cycle")
         if(this.Part) this.Part.Destroy()
     }
 
@@ -120,6 +121,7 @@ export class Particle {
         const Part = this.Part
         if(!Part) return this.Destroy();
         const time = (tick() - this.CreationTime) / this.Lifetime
+        print(time)
 
         Part.Color = lerpColorSequence(this.Color, time)
         Part.Size = new Vector3(lerpNumberSequence(this.Size.X, time), lerpNumberSequence(this.Size.Y, time), lerpNumberSequence(this.Size.Z, time))
