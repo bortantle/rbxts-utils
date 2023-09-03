@@ -1,4 +1,3 @@
-import Lerps from "@rbxts/lerp-functions";
 import { ParticleEmitterProps, Vector3Sequence } from "../types";
 import { ParticleLifeCycle } from "../util/ParticleLifeCycle";
 import { emitDirection } from "../util/emitDirections";
@@ -34,7 +33,7 @@ const defaultSettings: ParticleEmitterProps = {
 }
 
 export class Particle {
-    Parent: Instance;
+    Parent: Part | BasePart | MeshPart | Attachment
         Acceleration: Vector3;
         Color: ColorSequence;
         Drag: number;
@@ -56,12 +55,14 @@ export class Particle {
         VelocitySpread: number;
         Part: Part | BasePart | MeshPart
         Direction: Vector3
+        ChoosenDirection: Vector3;
         OriginalValues: {
             Position: Vector3,
             Size: Vector3,
             Transparency: number,
         }
         CreationTime: number 
+        isDestroyed = false 
 
     constructor(Parent: Part | BasePart | MeshPart | Attachment, Props: Partial<ParticleEmitterProps>, EventProps: {
         onDestroy?(): void,
@@ -88,14 +89,16 @@ export class Particle {
         this.Transparency = Props.Transparency ?? defaultSettings.Transparency;
         this.VelocityInheritance = Props.VelocityInheritance ?? defaultSettings.VelocityInheritance;
         this.VelocitySpread = Props.VelocitySpread ?? defaultSettings.VelocitySpread;
-        this.Direction = Props.CustomDirection ?? emitDirection[this.EmissionDirection.Name]
+        this.ChoosenDirection = emitDirection[this.EmissionDirection.Name]
         this.Parent = Parent 
+        this.SpreadAngle = new Vector3(math.random(-this.SpreadAngle.X, this.SpreadAngle.X), math.random(-this.SpreadAngle.Y, this.SpreadAngle.Y), math.random(-this.SpreadAngle.Z, this.SpreadAngle.Z))
+        this.Direction = this.Parent.Position.add((this.ChoosenDirection.add(this.Parent.Position.add(this.SpreadAngle)))).mul(math.noise(this.SpreadAngle.X, this.SpreadAngle.Y, this.SpreadAngle.Z)).Unit
         this.Part = Props.Part?.Clone() ?? defaultSettings.Part.Clone();
 
         this.Part.Anchored = true 
         this.Part.CanCollide = false 
         this.Part.CanTouch = EventProps.OnTouch && true ? true : false
-        this.Part.CFrame = Parent.CFrame.add(this.SpreadAngle.mul(math.noise(this.Part.Position.X, this.Part.Position.Y, this.Part.Position.Z)))
+        // this.Part.CFrame = 
 
         if(EventProps.OnTouch && this.Part.CanTouch) {
             this.Part.Touched.Connect((BasePart) => EventProps.OnTouch?.(BasePart))
@@ -112,20 +115,22 @@ export class Particle {
     }
 
     Destroy(): void {
+        if(this.isDestroyed) return;
+        this.isDestroyed = true 
         ParticleLifeCycle.Particles.filter(e=> e !== this)
         print("removed from life cycle")
         if(this.Part) this.Part.Destroy()
     }
 
     Update(): void {
+        if(this.isDestroyed) return;
         const Part = this.Part
         if(!Part) return this.Destroy();
         const time = (tick() - this.CreationTime) / this.Lifetime
-        print(time)
 
         Part.Color = lerpColorSequence(this.Color, time)
         Part.Size = new Vector3(lerpNumberSequence(this.Size.X, time), lerpNumberSequence(this.Size.Y, time), lerpNumberSequence(this.Size.Z, time))
-        Part.CFrame = Part.CFrame.add(this.Direction.mul(this.Speed))
+        Part.CFrame = Part.CFrame.add(this.Direction.mul(this.Speed/100))
         Part.Transparency = lerpNumberSequence(this.Transparency, time)
         // TODO: ROTATION
 

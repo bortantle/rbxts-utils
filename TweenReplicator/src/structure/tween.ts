@@ -8,7 +8,7 @@ function lerp(a: number, b: number, alpha: number) {
 }
 
 export class Tween<T extends Instance> {
-	public readonly instance: TweenInstanceData<T>[];
+	public instance: TweenInstanceData<T>[];
 	public readonly tweenInfo: TweenInfo;
 	private readonly id: string;
 	private didPause: boolean = false;
@@ -35,7 +35,7 @@ export class Tween<T extends Instance> {
 
 	public Add<c extends Instance>(instance: TweenInstanceData<c>) {
 		if(this.startTime) return warn("You cannot add an instance to a tween that has already started")
-		this.instance.push(instance as unknown as TweenInstanceData<T>);
+		this.instance = [...this.instance, instance as unknown as TweenInstanceData<T>]
 	}
 
 	public Play(Player?: Player | Player[]) {

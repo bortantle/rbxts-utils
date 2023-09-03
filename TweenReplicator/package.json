@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/tweenreplicator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Easily replicate multiple tweens to the client.",
   "main": "out/init.lua",
   "scripts": {
@@ -20,8 +20,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@rbxts/compiler-types": "^2.1.0-types.1",
-    "@rbxts/types": "^1.0.710",
+    "@rbxts/types": "^1.0.712",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "eslint": "^8.47.0",
@@ -32,6 +31,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@rbxts/compiler-types": "^2.1.1-types.0",
     "@rbxts/services": "^1.5.1"
   },
   "repository": {

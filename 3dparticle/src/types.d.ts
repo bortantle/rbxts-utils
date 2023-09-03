@@ -20,7 +20,6 @@ export interface ParticleEmitterProps {
 	VelocityInheritance: number;
 	VelocitySpread: number;
 	Part: BasePart | MeshPart | Part;
-	CustomDirection?: Vector3
 }
 
 export type Vector3Sequence = {
